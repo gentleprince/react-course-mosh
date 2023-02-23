@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    value: this.props.value,
+    value: this.props.counter.value,
   };
 
   increase = () => {
@@ -12,9 +12,18 @@ class Counter extends Component {
   render() {
     return (
       <div>
+        {/* same as
+        <h4>{this.props.id}</h4> */}
+        {this.props.counter.children}
         <span className={this.getBadgeClasses()}>{this.getValue()}</span>
         <button onClick={this.increase} className="btn btn-secondary btn-small">
           Increase
+        </button>
+        <button
+          onClick={() => this.props.onDelete(this.props.counter.id)}
+          className="btn btn-sm btn-danger m-2"
+        >
+          Delete
         </button>
       </div>
     );
